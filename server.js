@@ -19,11 +19,11 @@ app.get('/test-db', function (req, res){
  pool.query('select * from employee',function(err,result) {
 
     if (err){
-    res.status(500).send(err.tostring())
+    res.status(500).send(err.tostring());
     }
     else
     {
-    res.send(JSON.stringfy(result))
+    res.send(JSON.stringfy(result));
     }
 });
 });
