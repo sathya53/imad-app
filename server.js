@@ -14,14 +14,6 @@ var config={
 var app = express();
 app.use(morgan('combined'));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
-
-app.get('/article-one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
-});
-
 var pool= new Pool(config);
 app.get('/test-db', function (req, res){ 
  pool.query('select * from employee',function(err,result) {
@@ -36,6 +28,15 @@ app.get('/test-db', function (req, res){
 });
 });
     
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+app.get('/article-one', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+});
+
 app.get('/article-two', function (req, res) {
   res.send('This the call to Article Two');
 });
